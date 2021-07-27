@@ -1,0 +1,21 @@
+
+util must implement the following functions:
+* compare     A comparison function that takes in two words in that language
+              and returns a 0 if they compare "equal" (that is, either word
+              could come first in an "alphabetical" order), a negative value
+              if the first word should come first, or a positive value if the
+              second word should come first.
+              The comparison should be case-insensitive.
+    compare(a: str, b: str) -> int
+* decompose   takes in a word (and pronunciation hint; see XMLINDEX) in the
+              given language and decomposes it into individual parts under which
+              the word may be categorized. For languages using the Latin script
+              or most other alphabetical scripts, this is simply splitting the
+              word into its individual letters; as an example for English,
+              "word" => ["W","O","R","D"]. If the language has casing, the
+              decomposition should be in the main illustrative case (uppercase
+              for many alphabetic scripts).
+    decompose(word: str, pronhint: str) -> list
+* snippet_compare       Same as compare, but for "snippets", i.e. the outputs
+                        from decompose.
+    snippet_compare(a: tuple, b: tuple) -> int

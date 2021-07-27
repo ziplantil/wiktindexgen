@@ -1,0 +1,94 @@
+<index> - the main index. this is a required tag and everything that follows
+          shall fall under it.
+  attributes:
+    lang=    language code. required.
+    date=    date or timestamp in ISO 8601 format describing when the data
+             was extracted. required.
+             for XML dumps, this should be the dump date.
+             for live data dumps, the date when the XML was generated.
+  <meta> - contains metadata about the index. optional.
+    <site> - site protocol + domain with a trailing slash. optional, but
+             required for HTML formatted indexes.
+    <count> - the number of entries in total. optional.
+  <e> - one entry.
+    <k> - word form/lemma. required, only one per <e>.
+    <pos> - part of speech. optional (0-*).
+        recognized values (subject to change; expansions allowed):
+            n - noun
+            v - verb
+            a - adjective
+            adv - adverb
+            p - pronoun
+            pn - proper noun
+            num - numeral
+            part - particle
+            prep - preposition
+            postp - postposition
+            conj - conjunction
+            det - determiner
+            int - interjection
+            pref - prefix
+            suff - suffix
+            infix
+            interfix
+            clitic
+            ideophone
+            phrase
+            proverb
+            letter
+            symbol
+            root
+    <infl> - inflection. optional (0-*). language dependent, but use
+            irreg for irregular inflection.
+    <class> - (noun) class. optional (0-*). language dependent.
+    <g> - gender. optional (0-*).
+        recognized values (subject to change; expansions allowed):
+            m - masculine
+            f - feminine
+            n - neuter
+            c - common gender
+            an - animate
+            in - inanimate
+            anml - animal
+            pr - personal
+            np - nonpersonal
+    <num> - number. optional (0-*).
+        recognized values (subject to change; expansions allowed):
+            s - singular (best to omit if singular is the default anyway)
+            d - dual
+            p - plural
+    <aspect> - aspect. optional (0-*).
+        recognized values (subject to change; expansions allowed):
+            impf - imperfective
+            pf - perfective
+    <ph> - pronunciation hint. optional (0-1). this does not refer to IPA or
+           any other scheme, but rather it is used for the phonemic script in
+           languages that use multiple writing systems and the main one used to
+           write this particular word is not sufficient to determine the
+           pronunciation. for example, with Japanese, this corresponds to
+           the kana spelling of a word.
+    <tr> - transliteration (romanization). optional (0-*).
+    <ts> - transcription. optional (0-*).
+    <label> - labels. optional (0-*). labels include such examples:
+              informal, colloquial, slang, vulgar, formal, poetic, archaic,
+              dialectal
+              labels should apply to the entire term, not just some subsenses
+    <audio> - optional (0-*). name of audio pronunciation.
+    <enlink> - optional (0-*). English word from which the word was found, or
+               can also be used as a definition.
+               Useful for potential redlinks.
+    <from> - optional (0-*). The word from which this word is linked to.
+             Useful for potential redlinks if they are under derived terms.
+    <main> - main term. if specified, the index entry is considered a redirect
+             or "see _" entry. optional, at most one.
+    <def> - definition. if it exists, it should be brief and have no
+            special formatting. optional (0-*), not allowed if <main>.
+    <c> - arbitrary comment. optional. ignored.
+    
+
+
+Note that there might be multiple <e>'s with the same <k> - this can happen
+if the same word form has multiple etymologies, such as with the English word
+"bank" (bank as an institution, riverbank, row of things, etc.)
+
+

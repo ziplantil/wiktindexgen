@@ -1,0 +1,56 @@
+
+Scripts for creating indexes from Wiktionary. Currently only the English
+Wiktionary is supported, but that doesn't have to be the case.
+
+Many of these scripts require wikitextlib, which can be found at
+<https://github.com/ziplantil/wikitextlib>.
+
+The scripts here consist of three parts:
+* util - General utilities for specific languages. Identified by a 
+  ISO 639 code with one set of utilities for each language. See UTILINFO
+  for the functions that util must implement for every language.
+  There is also a util.definitions for some definitions.
+* extract - Extracts data from Wiktionary and return a file in a
+  word index XML format (see specifications under XMLINDEX). extraction
+  has two subcomponents:
+  * find - finds pages to parse and passes the appropriate contents (L2)
+           to parse. These scripts are identified by the site and the
+           means of input, which can be:
+           - pwb - pywikibot. Uses pywikibot to get a list of pages from
+                   a category, finds contents under a specific heading
+                   and passes to parse.
+                   requires pywikibot and wikitextlib.
+           - xml - extracts entries from a MediaWiki XML dump.
+                   requires wikitextlib.
+           For example, find_enwikt_pwb finds entries from the English
+           Wiktionary by using pywikibot.
+  * parse - parses an entry and possibly emits an entry for the index.
+    These scripts are identified by the site and the language code. For
+    example, parse_enwikt_fi parses Finnish entries from en.wiktionary.
+  The extract script takes in a site id (such as enwikt), language code
+  and means of extraction (pwb, xml, etc.) as parameters, the output
+  XML file and optional parameters (which are passed to find by default,
+  but some named parameters may end up to parse).
+
+  indexgen.py extract <site> <lang> <method> <out-xml> [...]
+
+* format - Takes in a word index in XML format, as given by extract, and
+  formats it into an index.
+  - format_enwikt_pwb   takes in a header and dumps a formatted index
+                        through pywikibot. formatting is in English and
+                        optimized for the English Wiktionary.
+                        requires pywikibot and wikitextlib.
+  - format_enwikt_txt   takes in a header and dumps a formatted index
+                        as text files containing wikitext.
+                        formatting is in English and
+                        optimized for the English Wiktionary.
+                        requires pywikibot and wikitextlib.
+  And so on, where enwikt can also be replaced with something else
+  (provided the script exists).
+  In addition, there might be other forms of output, such as
+  - format_en_html      English language HTML output.
+  The format script takes in a XML and the formatter (without format_), as well
+  as optional addition parameters (passed to format).
+
+  indexgen.py format <xml> <formatter> [...]
+
