@@ -79,10 +79,13 @@
                Useful for potential redlinks.
     <from> - optional (0-*). The word from which this word is linked to.
              Useful for potential redlinks if they are under derived terms.
+    <full> - full term. used for abbreviations or shortenings (such as abbr.
+             having <full>abbreviation</full>). optional, at most one.
     <main> - main term. if specified, the index entry is considered a redirect
              or "see _" entry. optional, at most one.
     <def> - definition. if it exists, it should be brief and have no
-            special formatting. optional (0-*), not allowed if <main>.
+            special formatting. optional (0-*).
+            <full>, <main>, <def> are mutually exclusive.
     <c> - arbitrary comment. optional. ignored.
     
 

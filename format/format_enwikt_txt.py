@@ -7,9 +7,9 @@ def format(infile, args, kwargs):
         raise ValueError("missing output folder")
     folder = args[0]
 
-    lang, date, pages = formatter.format(infile, lambda lang, snippet: lang + "_" + "".join(snippet), args, kwargs)
+    lang, date, pages = formatter.format(infile, lambda lang, snippet: lang + "_" + "_".join(snippet), args, kwargs)
 
     for snippet, text in pages:
-        fn = lang + "_" + "".join(snippet) + ".txt"
+        fn = lang + "_" + "_".join(snippet) + ".txt"
         with open(os.path.join(folder, fn), "w", encoding = "utf-8") as f:
             f.write(text)

@@ -23,6 +23,7 @@ templateToHeadTable = {
     "fi-verb": "verb"
 }
 nonlemmas = ["infinitive", "participle", "comparative", "superlative", "form"]
+validHeads = set(templateToHeadTable.values())
 def templateToHead(temp_name):
     return templateToHeadTable.get(temp_name, None)
 
@@ -50,6 +51,8 @@ def parse(title, text, kwargs):
             if head is not None:
                 nonlemma = any(nl in head for nl in nonlemmas)
             if not nonlemma:
+                if head and head.endswith("s") and head[:-1] in validHeads:
+                    head = head[:-1]
                 if head and not titled:
                     new_entry.append(("k", title))
                     titled = True

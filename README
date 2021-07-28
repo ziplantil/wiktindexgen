@@ -44,13 +44,13 @@ The scripts here consist of three parts:
                         as text files containing wikitext.
                         formatting is in English and
                         optimized for the English Wiktionary.
-                        requires pywikibot and wikitextlib.
+                        requires wikitextlib.
   And so on, where enwikt can also be replaced with something else
   (provided the script exists).
   In addition, there might be other forms of output, such as
   - format_en_html      English language HTML output.
-  The format script takes in a XML and the formatter (without format_), as well
+  The format script takes the formatter (without format_) and an XML, as well
   as optional addition parameters (passed to format).
 
-  indexgen.py format <xml> <formatter> [...]
+  indexgen.py format <formatter> <xml> [...]
 

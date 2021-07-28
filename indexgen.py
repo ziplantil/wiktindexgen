@@ -62,7 +62,7 @@ def do_extract(args):
 
 def do_format(args):
     try:
-        inxml, formatter, *rest = args
+        formatter, inxml, *rest = args
     except ValueError:
         raise UsageError("not enough parameters: " +
                          "<formatter> <in-xml>")

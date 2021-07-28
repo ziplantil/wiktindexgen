@@ -19,7 +19,7 @@ def format(infile, args, kwargs):
         title = prefix + "".join("/" + c for c in snippet)
         page = Page(site, title)
         try:
-            if page.text == text:
+            if page.text.strip() == text.strip():
                 continue
         except:
             pass

@@ -3,6 +3,7 @@ import util.definitions as defs
 import util.htmlutils as html
 
 aIsAdj = {"a": "adj"}
+longerNames = {"a": "adj", "p": "pron", "pn": "proper"}
 
 def partOfSpeechSimple(pos, forms = {}):
     return "''{}''".format(forms.get(pos, pos))

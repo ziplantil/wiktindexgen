@@ -7,8 +7,8 @@ from collections import OrderedDict
 MAX_TERMS_PER_PAGE = 1000
 # if more than this many per page, add subheadings
 MAX_TERMS_PER_SECTION = 200
-# probably don't need to split beyond five levels
-MAX_LEVELS = 5
+# probably don't need to split beyond six levels
+MAX_LEVELS = 6
 
 def strip_ns(tag):
     if "{" and "}" in tag:
@@ -48,7 +48,7 @@ def format_page(langutil, fmtpage, make_link, key, pages, data):
     except:
         subdivide = subdivide_default
     try:
-        make_page = fmtpage.make
+        make_page = fmtpage.page
     except:
         from .page.simplepage import make_page
     if subheadings:

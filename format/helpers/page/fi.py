@@ -10,7 +10,7 @@ def link(form, entry):
     if "main" in entry:
         footer += "→ " + ", ".join(fi_link(x) for x in entry["main"])
     elif "pos" in entry:
-        footer += "– " + fmtpos.partsOfSpeechSimple(entry["pos"], fmtpos.aIsAdj)
+        footer += "– " + fmtpos.partsOfSpeechSimple(entry["pos"], fmtpos.longerNames)
     return (base + footer).strip()
 
 always_subdivide = False
