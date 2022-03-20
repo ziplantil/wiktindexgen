@@ -7,13 +7,13 @@ class Finder():
     def __init__(self, args, kwargs):
         self.site = Site("en", fam="wiktionary")
         self.site.login()
-        self.category = Category(self.site, l2 + " lemmas")
 
     def get_date(self):
         return datetime.datetime.now().date().isoformat()
 
     def get_pages(self, l2):
-        catlist = self.site.preloadpages(self.category.articles())
+        category = Category(self.site, l2 + " lemmas")
+        catlist = self.site.preloadpages(category.articles())
         while True:
             try:
                 page = next(catlist)
